@@ -178,19 +178,19 @@
 
         <div class="hidden md:flex items-center">
           <div class="relative">
-            <input 
-              type="text" 
+            <input
+              type="text"
               id="searchInput"
-              placeholder="Cari parfum..." 
+              placeholder="Cari parfum..."
               class="bg-gray-900/70 border border-gray-700 text-white pl-10 pr-4 py-2 rounded-full w-48 lg:w-64 focus:outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all duration-300"
-            >
+            />
             <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
             <div id="searchResults" class="absolute top-full left-0 right-0 mt-2 bg-gray-900/95 backdrop-blur-lg rounded-xl shadow-2xl border border-yellow-400/20 hidden z-50 max-h-96 overflow-y-auto">
               <!-- Results will be populated by JS -->
             </div>
           </div>
         </div>
-        
+
         <!-- Mobile Menu Button -->
         <button id="mobileMenuButton" class="md:hidden text-2xl hover:text-yellow-400 transition duration-300 transform hover:scale-110">
           <i class="fas fa-bars"></i>
@@ -423,7 +423,8 @@
             <button
               onclick="checkout()"
               class="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black py-4 rounded-xl hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 font-bold shadow-lg hover:shadow-xl flex items-center justify-center group/btn"
-            >    <i class="fab fa-whatsapp mr-3 text-xl group-hover/btn:scale-110 transition-transform duration-300"></i>
+            >
+              <i class="fab fa-whatsapp mr-3 text-xl group-hover/btn:scale-110 transition-transform duration-300"></i>
               Checkout via WhatsApp
             </button>
             <button onclick="closeCart()" class="w-full border border-gray-700 text-gray-300 py-3 rounded-xl hover:bg-gray-800 hover:text-white transition duration-300 flex items-center justify-center">
@@ -586,7 +587,7 @@
 
     <!-- JAVASCRIPT -->
     <script>
-      // Product Data
+      // Product Data dengan volume 50ml
       const products = [
         {
           id: 1,
@@ -599,6 +600,7 @@
           middleNotes: "Jasmine, Rose, Lily",
           baseNotes: "Musk, Sandalwood",
           badge: "BEST SELLER",
+          volume: "50ml",
         },
         {
           id: 2,
@@ -610,6 +612,7 @@
           topNotes: "Black Pepper, Cardamom",
           middleNotes: "Leather, Patchouli",
           baseNotes: "Amber, Vetiver, Cedarwood",
+          volume: "50ml",
         },
         {
           id: 3,
@@ -622,6 +625,7 @@
           middleNotes: "Sandalwood, Amber",
           baseNotes: "Musk, Cedarwood",
           badge: "NEW",
+          volume: "50ml",
         },
         {
           id: 4,
@@ -634,6 +638,7 @@
           middleNotes: "Water Lily, Jasmine",
           baseNotes: "Musk, Amberwood",
           badge: "",
+          volume: "50ml",
         },
         {
           id: 5,
@@ -646,6 +651,7 @@
           middleNotes: "Rose, Peony",
           baseNotes: "Cashmere Wood, Vanilla",
           badge: "PREMIUM",
+          volume: "50ml",
         },
         {
           id: 6,
@@ -658,6 +664,7 @@
           middleNotes: "Cedarwood, Patchouli",
           baseNotes: "Amber, Vetiver",
           badge: "",
+          volume: "50ml",
         },
         {
           id: 7,
@@ -670,6 +677,7 @@
           middleNotes: "Vanilla, Tonka Bean",
           baseNotes: "Amber, White Musk",
           badge: "",
+          volume: "50ml",
         },
         {
           id: 8,
@@ -682,6 +690,7 @@
           middleNotes: "Orange Blossom, Ginger",
           baseNotes: "Musk, Woody Notes",
           badge: "LIMITED",
+          volume: "50ml",
         },
       ];
 
@@ -706,8 +715,8 @@
       const notification = document.getElementById("notification");
       const notificationMessage = document.getElementById("notificationMessage");
       const backToTopButton = document.getElementById("backToTop");
-      const searchInput = document.getElementById('searchInput');
-      const searchResults = document.getElementById('searchResults');
+      const searchInput = document.getElementById("searchInput");
+      const searchResults = document.getElementById("searchResults");
 
       // Initialize
       document.addEventListener("DOMContentLoaded", function () {
@@ -720,37 +729,37 @@
 
       // Setup Payment Methods
       function setupPaymentMethods() {
-        const paymentMethods = document.querySelectorAll('.payment-method');
-        const selectedPaymentDiv = document.getElementById('selectedPayment');
-        const selectedPaymentText = document.getElementById('selectedPaymentText');
-        
+        const paymentMethods = document.querySelectorAll(".payment-method");
+        const selectedPaymentDiv = document.getElementById("selectedPayment");
+        const selectedPaymentText = document.getElementById("selectedPaymentText");
+
         // Set default selected
-        paymentMethods[0].classList.add('border-yellow-400', 'bg-gray-800/70');
-        selectedPaymentDiv.classList.remove('hidden');
-        
-        paymentMethods.forEach(method => {
-          method.addEventListener('click', function() {
+        paymentMethods[0].classList.add("border-yellow-400", "bg-gray-800/70");
+        selectedPaymentDiv.classList.remove("hidden");
+
+        paymentMethods.forEach((method) => {
+          method.addEventListener("click", function () {
             // Remove active class from all
-            paymentMethods.forEach(m => {
-              m.classList.remove('border-yellow-400', 'bg-gray-800/70');
+            paymentMethods.forEach((m) => {
+              m.classList.remove("border-yellow-400", "bg-gray-800/70");
             });
-            
+
             // Add active class to clicked
-            this.classList.add('border-yellow-400', 'bg-gray-800/70');
-            
+            this.classList.add("border-yellow-400", "bg-gray-800/70");
+
             // Update selected payment method
             selectedPaymentMethod = this.dataset.method;
-            
+
             // Update selected payment text
             const methodText = {
-              'transfer': 'Transfer Bank (BCA, BNI, BRI)',
-              'qris': 'QRIS (Semua E-Wallet & Bank)',
-              'dana': 'DANA (E-Wallet)',
-              'ovo': 'OVO (E-Wallet)'
+              transfer: "Transfer Bank (BCA, BNI, BRI)",
+              qris: "QRIS (Semua E-Wallet & Bank)",
+              dana: "DANA (E-Wallet)",
+              ovo: "OVO (E-Wallet)",
             };
-            
+
             selectedPaymentText.textContent = `${methodText[selectedPaymentMethod]} dipilih`;
-            selectedPaymentDiv.classList.remove('hidden');
+            selectedPaymentDiv.classList.remove("hidden");
           });
         });
       }
@@ -758,16 +767,13 @@
       // Search Functions
       function performSearch(query) {
         if (!query.trim()) {
-          searchResults.innerHTML = '';
-          searchResults.classList.add('hidden');
+          searchResults.innerHTML = "";
+          searchResults.classList.add("hidden");
           return;
         }
-        
-        const filtered = products.filter(product => 
-          product.name.toLowerCase().includes(query.toLowerCase()) ||
-          product.category.some(cat => cat.toLowerCase().includes(query.toLowerCase()))
-        );
-        
+
+        const filtered = products.filter((product) => product.name.toLowerCase().includes(query.toLowerCase()) || product.category.some((cat) => cat.toLowerCase().includes(query.toLowerCase())));
+
         displaySearchResults(filtered, query);
       }
 
@@ -780,12 +786,12 @@
               <a href="produk.html" class="text-yellow-400 hover:text-yellow-300 text-sm mt-2 inline-block">Lihat semua produk</a>
             </div>
           `;
-          searchResults.classList.remove('hidden');
+          searchResults.classList.remove("hidden");
           return;
         }
-        
+
         let html = '<div class="p-2">';
-        results.forEach(product => {
+        results.forEach((product) => {
           html += `
             <a href="javascript:void(0)" onclick="showProductDetailFromSearch(${product.id})" class="flex items-center p-3 hover:bg-gray-800/50 rounded-lg transition duration-200 group">
               <div class="w-12 h-12 rounded-lg overflow-hidden mr-4 flex-shrink-0">
@@ -793,13 +799,13 @@
               </div>
               <div class="flex-grow">
                 <div class="font-medium text-white group-hover:text-yellow-300 transition-colors">${product.name}</div>
-                <div class="text-gray-400 text-sm">${product.category.map(cat => cat.charAt(0).toUpperCase() + cat.slice(1)).join(', ')} • Rp ${product.price.toLocaleString()}</div>
+                <div class="text-gray-400 text-sm">${product.category.map((cat) => cat.charAt(0).toUpperCase() + cat.slice(1)).join(", ")} • ${product.volume} • Rp ${product.price.toLocaleString()}</div>
               </div>
               <i class="fas fa-chevron-right text-gray-400 group-hover:text-yellow-400 ml-2"></i>
             </a>
           `;
         });
-        
+
         html += `
           <div class="border-t border-gray-800 mt-2 pt-2">
             <a href="produk.html" class="block text-center p-3 text-yellow-400 hover:text-yellow-300 text-sm font-medium">
@@ -808,22 +814,22 @@
             </a>
           </div>
         `;
-        
-        html += '</div>';
+
+        html += "</div>";
         searchResults.innerHTML = html;
-        searchResults.classList.remove('hidden');
+        searchResults.classList.remove("hidden");
       }
 
       function showProductDetailFromSearch(productId) {
-        const product = products.find(p => p.id === productId);
+        const product = products.find((p) => p.id === productId);
         if (product) {
           showProductDetail(product);
-          searchResults.classList.add('hidden');
-          searchInput.value = '';
+          searchResults.classList.add("hidden");
+          searchInput.value = "";
         }
       }
 
-      // Render Products
+      // Render Products dengan volume 50ml
       function renderProducts() {
         productsContainer.innerHTML = "";
 
@@ -879,12 +885,17 @@
                     <h4 class="text-xl font-bold text-white mb-2 group-hover:text-yellow-400 transition-colors duration-300">${product.name}</h4>
                     <div class="flex flex-wrap gap-2 mb-3">
                         ${categoryBadges}
+                        <!-- BADGE VOLUME 50ml -->
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">
+                            <i class="fas fa-flask mr-1"></i>${product.volume}
+                        </span>
                     </div>
                     <p class="text-gray-400 text-sm mb-4 line-clamp-2">${product.description}</p>
                     <div class="flex items-center justify-between mb-4">
                         <div>
                             <span class="text-lg font-bold text-yellow-300">Rp ${product.price.toLocaleString()}</span>
                             ${product.oldPrice ? `<span class="text-gray-400 line-through text-sm ml-2">Rp ${product.oldPrice.toLocaleString()}</span>` : ""}
+                            
                         </div>
                     </div>
                     <div class="flex gap-2">
@@ -1024,7 +1035,7 @@
                         <img src="${item.image}" class="w-16 h-16 object-cover rounded-lg" alt="${item.name}">
                         <div class="flex-1 min-w-0">
                             <h4 class="font-bold text-white truncate">${item.name}</h4>
-                            <p class="text-yellow-300 text-sm">Rp ${item.price.toLocaleString()}</p>
+                            <p class="text-yellow-300 text-sm">Rp ${item.price.toLocaleString()} • 50ml</p>
                             <div class="flex items-center space-x-3 mt-2">
                                 <button onclick="updateCartItem(${index}, -1)" class="w-8 h-8 flex items-center justify-center bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors">
                                     <i class="fas fa-minus text-xs"></i>
@@ -1062,13 +1073,14 @@
             name: product.name,
             price: product.price,
             image: product.image,
+            volume: product.volume,
             quantity: 1,
           });
         }
 
         localStorage.setItem("aromalux_cart", JSON.stringify(cart));
         updateCartDisplay();
-        showNotification(`${product.name} ditambahkan ke keranjang!`);
+        showNotification(`${product.name} (${product.volume}) ditambahkan ke keranjang!`);
       }
 
       // Add to Cart from Modal
@@ -1086,6 +1098,7 @@
             name: currentProduct.name,
             price: currentProduct.price,
             image: currentProduct.image,
+            volume: currentProduct.volume,
             quantity: quantity,
           });
         }
@@ -1093,7 +1106,7 @@
         localStorage.setItem("aromalux_cart", JSON.stringify(cart));
         updateCartDisplay();
         closeModal();
-        showNotification(`${currentProduct.name} (${quantity}x) ditambahkan ke keranjang!`);
+        showNotification(`${currentProduct.name} (${currentProduct.volume}) (${quantity}x) ditambahkan ke keranjang!`);
       }
 
       // Update Cart Item
@@ -1117,7 +1130,7 @@
         showNotification(`${itemName} dihapus dari keranjang`);
       }
 
-      // Show Product Detail
+      // Show Product Detail dengan volume 50ml
       function showProductDetail(product) {
         currentProduct = product;
         modalQuantity = 1;
@@ -1126,7 +1139,12 @@
         document.getElementById("modalImage").src = product.image;
         document.getElementById("modalImage").alt = product.name;
         document.getElementById("modalDescription").textContent = product.description;
-        document.getElementById("modalPrice").textContent = `Rp ${product.price.toLocaleString()}`;
+
+        // TAMBAHKAN INFO VOLUME DI HARGA
+        document.getElementById("modalPrice").innerHTML = `
+          Rp ${product.price.toLocaleString()} 
+          <span class="text-gray-400 text-lg ml-2">(${product.volume})</span>
+        `;
 
         if (product.oldPrice) {
           document.getElementById("modalOldPrice").textContent = `Rp ${product.oldPrice.toLocaleString()}`;
@@ -1134,9 +1152,11 @@
           document.getElementById("modalOldPrice").textContent = "";
         }
 
-        // Update categories
+        // Update categories - TAMBAHKAN BADGE VOLUME
         const categoriesContainer = document.getElementById("modalCategories");
         categoriesContainer.innerHTML = "";
+
+        // Tambahkan badge kategori
         product.category.forEach((cat) => {
           const categoryStyles = {
             floral: "bg-pink-500/20 text-pink-300",
@@ -1156,6 +1176,12 @@
           span.textContent = categoryNames[cat];
           categoriesContainer.appendChild(span);
         });
+
+        // Tambahkan badge volume
+        const volumeSpan = document.createElement("span");
+        volumeSpan.className = "px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm";
+        volumeSpan.innerHTML = `<i class="fas fa-flask mr-1"></i>${product.volume}`;
+        categoriesContainer.appendChild(volumeSpan);
 
         // Update notes
         document.getElementById("modalTopNotes").textContent = product.topNotes;
@@ -1199,17 +1225,17 @@
 
         // Get payment method details
         let paymentDetails = "";
-        switch(selectedPaymentMethod) {
-          case 'transfer':
+        switch (selectedPaymentMethod) {
+          case "transfer":
             paymentDetails = "Transfer Bank (BCA, BNI, BRI)";
             break;
-          case 'qris':
+          case "qris":
             paymentDetails = "QRIS (Semua E-Wallet & Bank)";
             break;
-          case 'dana':
+          case "dana":
             paymentDetails = "DANA (E-Wallet)";
             break;
-          case 'ovo':
+          case "ovo":
             paymentDetails = "OVO (E-Wallet)";
             break;
           default:
@@ -1222,7 +1248,7 @@
         cart.forEach((item) => {
           const itemTotal = item.price * item.quantity;
           subtotal += itemTotal;
-          orderSummary += `• ${item.name} (${item.quantity}x) - Rp ${itemTotal.toLocaleString()}\n`;
+          orderSummary += `• ${item.name} (${item.volume}) - ${item.quantity}x - Rp ${itemTotal.toLocaleString()}\n`;
         });
 
         const total = subtotal;
@@ -1314,28 +1340,28 @@
         // Search functionality
         if (searchInput) {
           let searchTimeout;
-          searchInput.addEventListener('input', (e) => {
+          searchInput.addEventListener("input", (e) => {
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(() => {
               performSearch(e.target.value);
             }, 300);
           });
-          
-          searchInput.addEventListener('focus', () => {
+
+          searchInput.addEventListener("focus", () => {
             if (searchInput.value.trim()) {
               performSearch(searchInput.value);
             }
           });
-          
-          document.addEventListener('click', (e) => {
+
+          document.addEventListener("click", (e) => {
             if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-              searchResults.classList.add('hidden');
+              searchResults.classList.add("hidden");
             }
           });
-          
-          document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-              searchResults.classList.add('hidden');
+
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+              searchResults.classList.add("hidden");
             }
           });
         }
