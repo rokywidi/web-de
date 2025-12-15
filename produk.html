@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produk - AromaLux Luxury Perfume</title>
+    <meta name="description" content="Temukan koleksi parfum premium AromaLux dengan berbagai varian aroma. Wangi tahan lama, harga terjangkau." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 5px rgba(250, 204, 21, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -200% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
+      }
+
+      .fadeInUp {
+        animation: fadeInUp 0.8s ease forwards;
+      }
+      .float-animation {
+        animation: float 3s ease-in-out infinite;
+      }
+      .pulse-glow {
+        animation: pulseGlow 2s ease-in-out infinite;
+      }
+      .slideIn {
+        animation: slideIn 0.3s ease forwards;
+      }
+      .shimmer-effect {
+        background: linear-gradient(90deg, transparent, rgba(250, 204, 21, 0.2), transparent);
+        background-size: 200% 100%;
+        animation: shimmer 3s infinite;
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, #fbbf24, #f59e0b, #d97706);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .product-card {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+      }
+
+      .product-card.show {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .notification {
+        animation: fadeInUp 0.3s ease-out;
+      }
+
+      .filter-transition {
+        transition: all 0.3s ease;
+      }
+
+      .delay-100 {
+        animation-delay: 0.1s;
+      }
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+      .delay-400 {
+        animation-delay: 0.4s;
+      }
+      .delay-500 {
+        animation-delay: 0.5s;
+      }
+
+      .glass-effect {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(250, 204, 21, 0.1);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      @keyframes cartPulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .cart-pulse {
+        animation: cartPulse 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white font-sans overflow-x-hidden">
+    <!-- NAVBAR DENGAN ANIMASI -->
+    <header class="flex justify-between items-center px-4 md:px-8 py-4 bg-black/90 fixed w-full z-50 backdrop-blur-md transition-all duration-300">
+      <a href="index.html" class="text-2xl md:text-3xl font-bold tracking-wide text-yellow-400 hover:text-yellow-300 transition-all duration-300 transform hover:scale-105">AromaLux</a>
+
+      <nav class="hidden md:flex space-x-6 lg:space-x-8 text-lg">
+        <a href="index.html" class="hover:text-yellow-400 transition duration-300 relative group">
+          Home
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="produk.html" class="hover:text-yellow-400 transition duration-300 relative group text-yellow-400">
+          Produk
+          <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-yellow-400"></span>
+        </a>
+        <a href="brand.html" class="hover:text-yellow-400 transition duration-300 relative group">
+          Brand
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="kontak.html" class="hover:text-yellow-400 transition duration-300 relative group">
+          Kontak
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+      </nav>
+
+      <!-- CART & MOBILE MENU -->
+      <div class="flex items-center space-x-4">
+        <!-- Cart Button -->
+        <div class="relative">
+          <button id="cartButton" class="hover:text-yellow-400 transition duration-300 flex items-center space-x-1 group">
+            <i class="fas fa-shopping-cart text-xl group-hover:scale-110 transition-transform duration-300"></i>
+            <span id="cartCount" class="bg-yellow-400 text-black rounded-full w-6 h-6 text-xs inline-flex items-center justify-center">0</span>
+          </button>
+        </div>
+
+        <div class="hidden md:flex items-center">
+          <div class="relative">
+            <input 
+              type="text" 
+              id="searchInput"
+              placeholder="Cari parfum..." 
+              class="bg-gray-900/70 border border-gray-700 text-white pl-10 pr-4 py-2 rounded-full w-48 lg:w-64 focus:outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all duration-300"
+            >
+            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            <div id="searchResults" class="absolute top-full left-0 right-0 mt-2 bg-gray-900/95 backdrop-blur-lg rounded-xl shadow-2xl border border-yellow-400/20 hidden z-50 max-h-96 overflow-y-auto">
+              <!-- Results will be populated by JS -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuButton" class="md:hidden text-2xl hover:text-yellow-400 transition duration-300 transform hover:scale-110">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="absolute top-full left-0 w-full bg-black/95 backdrop-blur-lg hidden md:hidden transition-all duration-300">
+        <div class="flex flex-col p-6 space-y-4">
+          <a href="index.html" class="hover:text-yellow-400 py-2 border-b border-gray-800 hover:border-yellow-400 transition duration-300 hover:pl-4">Home</a>
+          <a href="produk.html" class="hover:text-yellow-400 py-2 border-b border-yellow-400 transition duration-300 hover:pl-4 text-yellow-400">Produk</a>
+          <a href="brand.html" class="hover:text-yellow-400 py-2 border-b border-gray-800 hover:border-yellow-400 transition duration-300 hover:pl-4">Brand</a>
+          <a href="kontak.html" class="hover:text-yellow-400 py-2 transition duration-300 hover:pl-4">Kontak</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HEADER PRODUK DENGAN ANIMASI - PERBAIKAN JARAK -->
+    <div class="pt-32 pb-10 px-4 md:px-10 bg-gradient-to-b from-black to-gray-900 text-center relative overflow-hidden">
+      <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-yellow-400/10 blur-xl"></div>
+      <div class="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-yellow-400/5 blur-xl"></div>
+
+      <div class="max-w-4xl mx-auto fadeInUp">
+        <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Koleksi <span class="text-yellow-400">Parfum Premium</span></h1>
+        <p class="text-gray-300 text-base md:text-lg mb-6">Temukan aroma yang tepat untuk setiap momen. Semua parfum kami dibuat dengan bahan premium dan tahan lama.</p>
+      </div>
+    </div>
+
+    <!-- FILTER KATEGORI DENGAN ANIMASI - PERBAIKAN JARAK -->
+    <section class="py-2 px-4 md:px-10 bg-gradient-to-b from-gray-900 to-black">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-xl md:text-2xl font-bold text-center mb-6 fadeInUp">
+          <span class="gradient-text">Kategori Produk</span>
+        </h2>
+
+        <div class="flex flex-wrap justify-center gap-2 mb-2">
+          <button
+            class="filter-btn active px-4 py-2.5 rounded-full transition-all duration-300 font-medium transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-yellow-400/20"
+            data-filter="all"
+            style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); color: black"
+          >
+            <i class="fas fa-th-large mr-2"></i>Semua Produk
+          </button>
+          <button class="filter-btn px-4 py-2.5 rounded-full transition-all duration-300 font-medium glass-effect hover:bg-pink-500/20 hover:border-pink-500/50 transform hover:scale-105 active:scale-95" data-filter="floral">
+            <i class="fas fa-spa mr-2"></i>🌸 Floral
+          </button>
+          <button class="filter-btn px-4 py-2.5 rounded-full transition-all duration-300 font-medium glass-effect hover:bg-amber-700/20 hover:border-amber-700/50 transform hover:scale-105 active:scale-95" data-filter="woody">
+            <i class="fas fa-tree mr-2"></i>🪵 Woody
+          </button>
+          <button class="filter-btn px-4 py-2.5 rounded-full transition-all duration-300 font-medium glass-effect hover:bg-cyan-500/20 hover:border-cyan-500/50 transform hover:scale-105 active:scale-95" data-filter="fresh">
+            <i class="fas fa-wind mr-2"></i>💧 Fresh
+          </button>
+          <button class="filter-btn px-4 py-2.5 rounded-full transition-all duration-300 font-medium glass-effect hover:bg-yellow-500/20 hover:border-yellow-500/50 transform hover:scale-105 active:scale-95" data-filter="sweet">
+            <i class="fas fa-candy-cane mr-2"></i>🍯 Sweet
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUK SECTION - PERBAIKAN JARAK -->
+    <section id="products" class="py-8 px-4 md:px-10 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+      <div class="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-yellow-400/5 blur-2xl"></div>
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-xl md:text-2xl font-bold mb-6 fadeInUp">
+          <i class="fas fa-box-open mr-3"></i>
+          <span class="gradient-text">Semua Produk</span>
+        </h2>
+
+        <div id="productsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <!-- Produk akan ditampilkan di sini melalui JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL PRODUCT DETAIL -->
+    <div id="productModal" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4">
+      <div class="bg-gradient-to-br from-gray-900 to-black backdrop-blur-sm rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-yellow-400/20">
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-6">
+            <h3 class="text-2xl font-bold text-yellow-400" id="modalTitle"></h3>
+            <button onclick="closeModal()" class="text-2xl text-gray-400 hover:text-white hover:rotate-90 transition-transform duration-300">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="relative">
+              <img id="modalImage" src="" alt="" class="rounded-xl w-full h-64 object-cover shadow-lg" />
+              <div class="absolute -bottom-3 -right-3 w-24 h-24 bg-yellow-400/10 rounded-full blur-xl"></div>
+            </div>
+            <div>
+              <div class="mb-4 flex flex-wrap gap-2" id="modalCategories"></div>
+              <div class="mb-6">
+                <p id="modalDescription" class="text-gray-300 mb-6 text-lg"></p>
+                <div class="mb-6">
+                  <h4 class="text-lg font-bold text-white mb-3">Notes Aroma:</h4>
+                  <div class="grid grid-cols-3 gap-3">
+                    <div class="bg-gray-800/50 rounded-lg p-3 text-center">
+                      <div class="text-yellow-400 mb-1">Top Notes</div>
+                      <div id="modalTopNotes" class="text-sm text-gray-300"></div>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-lg p-3 text-center">
+                      <div class="text-yellow-400 mb-1">Middle Notes</div>
+                      <div id="modalMiddleNotes" class="text-sm text-gray-300"></div>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-lg p-3 text-center">
+                      <div class="text-yellow-400 mb-1">Base Notes</div>
+                      <div id="modalBaseNotes" class="text-sm text-gray-300"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <span id="modalPrice" class="text-3xl font-bold text-yellow-300"></span>
+                    <span id="modalOldPrice" class="text-gray-400 line-through text-lg ml-2"></span>
+                  </div>
+                  <div class="flex items-center space-x-3 bg-gray-800/50 rounded-full p-1">
+                    <button onclick="changeQuantity(-1)" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-gray-600 transition-colors duration-200">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <span id="modalQuantity" class="text-xl font-bold w-8 text-center">1</span>
+                    <button onclick="changeQuantity(1)" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-gray-600 transition-colors duration-200">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <button
+                  onclick="addToCartFromModal()"
+                  class="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black py-4 rounded-xl hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 font-bold shadow-lg hover:shadow-xl text-lg flex items-center justify-center group/btn"
+                >
+                  <i class="fas fa-shopping-cart mr-3 group-hover/btn:rotate-12 transition-transform duration-300"></i>
+                  Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CART SIDEBAR -->
+    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-full md:w-96 bg-gradient-to-b from-gray-900 to-black shadow-xl transform translate-x-full transition-transform duration-300 z-50 border-l border-yellow-400/20">
+      <div class="h-full flex flex-col">
+        <div class="p-6 border-b border-gray-800">
+          <div class="flex justify-between items-center">
+            <h3 class="text-2xl font-bold text-yellow-400 flex items-center"><i class="fas fa-shopping-cart mr-3"></i>Keranjang</h3>
+            <button onclick="closeCart()" class="text-2xl text-gray-400 hover:text-white hover:rotate-90 transition-transform duration-300">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <p id="cartSubtitle" class="text-gray-400 text-sm mt-2">0 item di keranjang</p>
+        </div>
+
+        <div id="cartItems" class="flex-1 overflow-y-auto p-6">
+          <!-- Cart items akan diisi oleh JavaScript -->
+        </div>
+
+        <div class="p-6 border-t border-gray-800 bg-black/50">
+          <!-- Metode Pembayaran -->
+          <div class="mb-6">
+            <h4 class="text-lg font-bold text-white mb-3 flex items-center">
+              <i class="fas fa-credit-card text-yellow-400 mr-2"></i>
+              Metode Pembayaran
+            </h4>
+            <div class="grid grid-cols-2 gap-3 mb-4">
+              <div class="payment-method bg-gray-800/50 rounded-lg p-3 border border-gray-700 cursor-pointer hover:border-yellow-400 transition duration-300" data-method="transfer">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center mr-3">
+                    <i class="fas fa-university text-blue-400"></i>
+                  </div>
+                  <div>
+                    <div class="font-medium">Transfer Bank</div>
+                    <div class="text-xs text-gray-400">BCA, BNI, BRI</div>
+                  </div>
+                </div>
+              </div>
+              <div class="payment-method bg-gray-800/50 rounded-lg p-3 border border-gray-700 cursor-pointer hover:border-yellow-400 transition duration-300" data-method="qris">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center mr-3">
+                    <i class="fas fa-qrcode text-green-400"></i>
+                  </div>
+                  <div>
+                    <div class="font-medium">QRIS</div>
+                    <div class="text-xs text-gray-400">Semua E-Wallet & Bank</div>
+                  </div>
+                </div>
+              </div>
+              <div class="payment-method bg-gray-800/50 rounded-lg p-3 border border-gray-700 cursor-pointer hover:border-yellow-400 transition duration-300" data-method="dana">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-blue-400/20 rounded-lg flex items-center justify-center mr-3">
+                    <i class="fas fa-wallet text-blue-300"></i>
+                  </div>
+                  <div>
+                    <div class="font-medium">DANA</div>
+                    <div class="text-xs text-gray-400">E-Wallet</div>
+                  </div>
+                </div>
+              </div>
+              <div class="payment-method bg-gray-800/50 rounded-lg p-3 border border-gray-700 cursor-pointer hover:border-yellow-400 transition duration-300" data-method="ovo">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center mr-3">
+                    <i class="fas fa-mobile-alt text-purple-400"></i>
+                  </div>
+                  <div>
+                    <div class="font-medium">OVO</div>
+                    <div class="text-xs text-gray-400">E-Wallet</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="selectedPayment" class="text-sm text-gray-400 hidden">
+              <i class="fas fa-check-circle text-green-400 mr-2"></i>
+              <span id="selectedPaymentText">Transfer Bank (BCA, BNI, BRI) dipilih</span>
+            </div>
+          </div>
+
+          <div class="space-y-3 mb-6">
+            <div class="flex justify-between">
+              <span class="text-gray-400">Subtotal</span>
+              <span id="cartSubtotal" class="text-lg">Rp 0</span>
+            </div>
+            <div class="border-t border-gray-800 pt-3">
+              <div class="flex justify-between">
+                <span class="text-lg font-bold">Total</span>
+                <span id="cartTotal" class="text-2xl font-bold text-yellow-300">Rp 0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <button
+              onclick="checkout()"
+              class="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black py-4 rounded-xl hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 font-bold shadow-lg hover:shadow-xl flex items-center justify-center group/btn"
+            >    <i class="fab fa-whatsapp mr-3 text-xl group-hover/btn:scale-110 transition-transform duration-300"></i>
+              Checkout via WhatsApp
+            </button>
+            <button onclick="closeCart()" class="w-full border border-gray-700 text-gray-300 py-3 rounded-xl hover:bg-gray-800 hover:text-white transition duration-300 flex items-center justify-center">
+              <i class="fas fa-arrow-left mr-3"></i>
+              Lanjut Belanja
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="notification" class="fixed top-24 right-4 z-50 hidden">
+      <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-4 rounded-xl shadow-xl flex items-center space-x-3 max-w-sm">
+        <i class="fas fa-check-circle text-xl"></i>
+        <div>
+          <p id="notificationMessage" class="font-medium"></p>
+          <p class="text-sm opacity-90">Ditambahkan ke keranjang</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER DENGAN ANIMASI -->
+    <footer class="bg-gradient-to-b from-black via-gray-900 to-black pt-20 relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-30"></div>
+
+      <div class="py-12 px-4 md:px-10">
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-10">
+            <!-- Brand Info -->
+            <div class="lg:col-span-2 fadeInUp delay-100">
+              <a href="index.html" class="text-3xl font-bold text-yellow-400 mb-4 inline-block hover:scale-105 transition-transform duration-300"> <i class="fas fa-gem mr-2"></i>AromaLux </a>
+              <p class="text-gray-400 mb-6 max-w-md">Luxury perfume for everyone. Menghadirkan aroma mewah premium dengan kualitas terbaik dan harga yang terjangkau bagi semua kalangan.</p>
+              <div class="flex space-x-4">
+                <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-yellow-400 rounded-full flex items-center justify-center text-gray-300 hover:text-black transition-all duration-300 hover:scale-110">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-yellow-400 rounded-full flex items-center justify-center text-gray-300 hover:text-black transition-all duration-300 hover:scale-110">
+                  <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-yellow-400 rounded-full flex items-center justify-center text-gray-300 hover:text-black transition-all duration-300 hover:scale-110">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-yellow-400 rounded-full flex items-center justify-center text-gray-300 hover:text-black transition-all duration-300 hover:scale-110">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="fadeInUp delay-200">
+              <h4 class="text-lg font-bold text-white mb-6 flex items-center">
+                <i class="fas fa-link text-yellow-400 mr-3"></i>
+                Menu Cepat
+              </h4>
+              <ul class="space-y-3">
+                <li>
+                  <a href="index.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-chevron-right text-xs mr-3 text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="produk.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-chevron-right text-xs mr-3 text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                    Produk
+                  </a>
+                </li>
+                <li>
+                  <a href="brand.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-chevron-right text-xs mr-3 text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                    Brand
+                  </a>
+                </li>
+                <li>
+                  <a href="kontak.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-chevron-right text-xs mr-3 text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                    Kontak
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Produk -->
+            <div class="fadeInUp delay-300">
+              <h4 class="text-lg font-bold text-white mb-6 flex items-center">
+                <i class="fas fa-box text-yellow-400 mr-3"></i>
+                Koleksi
+              </h4>
+              <ul class="space-y-3">
+                <li>
+                  <a href="produk.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-fire text-yellow-400 mr-3 text-sm"></i>
+                    Best Seller
+                  </a>
+                </li>
+                <li>
+                  <a href="produk.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-star text-yellow-400 mr-3 text-sm"></i>
+                    New Arrival
+                  </a>
+                </li>
+                <li>
+                  <a href="produk.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-gem text-yellow-400 mr-3 text-sm"></i>
+                    Limited Edition
+                  </a>
+                </li>
+                <li>
+                  <a href="produk.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-gift text-yellow-400 mr-3 text-sm"></i>
+                    Gift Sets
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Kontak Info -->
+            <div class="fadeInUp delay-400">
+              <h4 class="text-lg font-bold text-white mb-6 flex items-center">
+                <i class="fas fa-phone text-yellow-400 mr-3"></i>
+                Hubungi Kami
+              </h4>
+              <ul class="space-y-3">
+                <li class="flex items-center group">
+                  <i class="fas fa-phone text-yellow-400 mr-3"></i>
+                  <a href="tel:+6289654878113" class="text-gray-400 hover:text-yellow-400 text-sm transition duration-300">+62 896-5487-8113</a>
+                </li>
+                <li class="flex items-center group">
+                  <i class="fas fa-envelope text-yellow-400 mr-3"></i>
+                  <a href="mailto:info@aromalux.com" class="text-gray-400 hover:text-yellow-400 text-sm transition duration-300">info@aromalux.com</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bottom Footer -->
+          <div class="border-t border-gray-800 pt-8 fadeInUp delay-500">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+              <div class="mb-4 md:mb-0 text-center md:text-left">
+                <p class="text-gray-400 text-sm">
+                  © 2025 <span class="text-yellow-400 font-semibold">AromaLux</span>. All Rights Reserved.
+                  <span class="mx-2 hidden md:inline">•</span>
+                  <br class="md:hidden" />
+                  <a href="privasi.html" class="hover:text-yellow-400 transition duration-300">Kebijakan Privasi</a>
+                  <span class="mx-2">•</span>
+                  <a href="syarat.html" class="hover:text-yellow-400 transition duration-300">Syarat & Ketentuan</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-yellow-400 text-black rounded-full shadow-lg flex items-center justify-center z-40 opacity-0 transition-all duration-300 transform translate-y-10 hover:bg-yellow-300">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      // Product Data
+      const products = [
+        {
+          id: 1,
+          name: "Radiant Bloom",
+          price: 159000,
+          category: ["floral", "fresh"],
+          image: "radiant.jpg",
+          description: "Aroma floral segar dengan sentuhan musk yang elegan. Perfect untuk acara spesial dan penggunaan sehari-hari.",
+          topNotes: "Bergamot, Green Notes",
+          middleNotes: "Jasmine, Rose, Lily",
+          baseNotes: "Musk, Sandalwood",
+          badge: "BEST SELLER",
+        },
+        {
+          id: 2,
+          name: "Noir Intense",
+          price: 169000,
+          category: ["woody"],
+          image: "noir.jpg",
+          description: "Aroma woody maskulin yang dalam dan misterius. Memberikan kesan percaya diri dan sophisticated.",
+          topNotes: "Black Pepper, Cardamom",
+          middleNotes: "Leather, Patchouli",
+          baseNotes: "Amber, Vetiver, Cedarwood",
+        },
+        {
+          id: 3,
+          name: "Vanilla Dream",
+          price: 159000,
+          category: ["sweet"],
+          image: "vanilla.jpg",
+          description: "Wangi vanilla manis yang hangat dengan sentuhan kayu. Membuat suasana menjadi nyaman dan romantis.",
+          topNotes: "Vanilla, Tonka Bean",
+          middleNotes: "Sandalwood, Amber",
+          baseNotes: "Musk, Cedarwood",
+          badge: "NEW",
+        },
+        {
+          id: 4,
+          name: "Ocean Breeze",
+          price: 155000,
+          category: ["fresh"],
+          image: "ocean.jpg",
+          description: "Aroma segar seperti angin laut di pagi hari. Memberikan kesan bersih dan menyegarkan.",
+          topNotes: "Sea Notes, Bergamot",
+          middleNotes: "Water Lily, Jasmine",
+          baseNotes: "Musk, Amberwood",
+          badge: "",
+        },
+        {
+          id: 5,
+          name: "Royal Velvet",
+          price: 165000,
+          category: ["floral", "sweet"],
+          image: "velvet.jpg",
+          description: "Parfum mewah dengan wangi floral yang kaya dan tahan lama. Didesain khusus untuk kemewahan.",
+          topNotes: "Pear, Raspberry",
+          middleNotes: "Rose, Peony",
+          baseNotes: "Cashmere Wood, Vanilla",
+          badge: "PREMIUM",
+        },
+        {
+          id: 6,
+          name: "Mystic Woods",
+          price: 165000,
+          category: ["woody", "fresh"],
+          image: "mystic.jpg",
+          description: "Kombinasi kayu dan aroma segar yang misterius. Cocok untuk malam hari dan acara spesial.",
+          topNotes: "Cypress, Bergamot",
+          middleNotes: "Cedarwood, Patchouli",
+          baseNotes: "Amber, Vetiver",
+          badge: "",
+        },
+        {
+          id: 7,
+          name: "Golden Essence",
+          price: 169000,
+          category: ["sweet", "floral"],
+          image: "golden.jpg",
+          description: "Wangi manis hangat dengan sentuhan vanilla dan amber. Membuat Anda terasa istimewa.",
+          topNotes: "Mandarin, Saffron",
+          middleNotes: "Vanilla, Tonka Bean",
+          baseNotes: "Amber, White Musk",
+          badge: "",
+        },
+        {
+          id: 8,
+          name: "Citrus Splash",
+          price: 155000,
+          category: ["fresh"],
+          image: "citrus.jpg",
+          description: "Aroma citrus segar yang memberikan energi dan semangat sepanjang hari.",
+          topNotes: "Lemon, Grapefruit",
+          middleNotes: "Orange Blossom, Ginger",
+          baseNotes: "Musk, Woody Notes",
+          badge: "LIMITED",
+        },
+      ];
+
+      // Cart Data
+      let cart = JSON.parse(localStorage.getItem("aromalux_cart")) || [];
+      let modalQuantity = 1;
+      let currentProduct = null;
+      let activeFilter = "all";
+      let selectedPaymentMethod = "transfer"; // Default payment method
+
+      // DOM Elements
+      const cartCount = document.getElementById("cartCount");
+      const cartItems = document.getElementById("cartItems");
+      const cartTotal = document.getElementById("cartTotal");
+      const cartSubtitle = document.getElementById("cartSubtitle");
+      const cartSubtotal = document.getElementById("cartSubtotal");
+      const cartSidebar = document.getElementById("cartSidebar");
+      const productModal = document.getElementById("productModal");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const productsContainer = document.getElementById("productsContainer");
+      const notification = document.getElementById("notification");
+      const notificationMessage = document.getElementById("notificationMessage");
+      const backToTopButton = document.getElementById("backToTop");
+      const searchInput = document.getElementById('searchInput');
+      const searchResults = document.getElementById('searchResults');
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", function () {
+        updateCartDisplay();
+        renderProducts();
+        setupEventListeners();
+        showProductsWithAnimation();
+        setupPaymentMethods();
+      });
+
+      // Setup Payment Methods
+      function setupPaymentMethods() {
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        const selectedPaymentDiv = document.getElementById('selectedPayment');
+        const selectedPaymentText = document.getElementById('selectedPaymentText');
+        
+        // Set default selected
+        paymentMethods[0].classList.add('border-yellow-400', 'bg-gray-800/70');
+        selectedPaymentDiv.classList.remove('hidden');
+        
+        paymentMethods.forEach(method => {
+          method.addEventListener('click', function() {
+            // Remove active class from all
+            paymentMethods.forEach(m => {
+              m.classList.remove('border-yellow-400', 'bg-gray-800/70');
+            });
+            
+            // Add active class to clicked
+            this.classList.add('border-yellow-400', 'bg-gray-800/70');
+            
+            // Update selected payment method
+            selectedPaymentMethod = this.dataset.method;
+            
+            // Update selected payment text
+            const methodText = {
+              'transfer': 'Transfer Bank (BCA, BNI, BRI)',
+              'qris': 'QRIS (Semua E-Wallet & Bank)',
+              'dana': 'DANA (E-Wallet)',
+              'ovo': 'OVO (E-Wallet)'
+            };
+            
+            selectedPaymentText.textContent = `${methodText[selectedPaymentMethod]} dipilih`;
+            selectedPaymentDiv.classList.remove('hidden');
+          });
+        });
+      }
+
+      // Search Functions
+      function performSearch(query) {
+        if (!query.trim()) {
+          searchResults.innerHTML = '';
+          searchResults.classList.add('hidden');
+          return;
+        }
+        
+        const filtered = products.filter(product => 
+          product.name.toLowerCase().includes(query.toLowerCase()) ||
+          product.category.some(cat => cat.toLowerCase().includes(query.toLowerCase()))
+        );
+        
+        displaySearchResults(filtered, query);
+      }
+
+      function displaySearchResults(results, query) {
+        if (results.length === 0) {
+          searchResults.innerHTML = `
+            <div class="p-6 text-center">
+              <i class="fas fa-search text-gray-400 text-2xl mb-3"></i>
+              <p class="text-gray-300">Tidak ditemukan produk dengan kata kunci "${query}"</p>
+              <a href="produk.html" class="text-yellow-400 hover:text-yellow-300 text-sm mt-2 inline-block">Lihat semua produk</a>
+            </div>
+          `;
+          searchResults.classList.remove('hidden');
+          return;
+        }
+        
+        let html = '<div class="p-2">';
+        results.forEach(product => {
+          html += `
+            <a href="javascript:void(0)" onclick="showProductDetailFromSearch(${product.id})" class="flex items-center p-3 hover:bg-gray-800/50 rounded-lg transition duration-200 group">
+              <div class="w-12 h-12 rounded-lg overflow-hidden mr-4 flex-shrink-0">
+                <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+              </div>
+              <div class="flex-grow">
+                <div class="font-medium text-white group-hover:text-yellow-300 transition-colors">${product.name}</div>
+                <div class="text-gray-400 text-sm">${product.category.map(cat => cat.charAt(0).toUpperCase() + cat.slice(1)).join(', ')} • Rp ${product.price.toLocaleString()}</div>
+              </div>
+              <i class="fas fa-chevron-right text-gray-400 group-hover:text-yellow-400 ml-2"></i>
+            </a>
+          `;
+        });
+        
+        html += `
+          <div class="border-t border-gray-800 mt-2 pt-2">
+            <a href="produk.html" class="block text-center p-3 text-yellow-400 hover:text-yellow-300 text-sm font-medium">
+              <i class="fas fa-store mr-2"></i>
+              Lihat semua produk (${products.length})
+            </a>
+          </div>
+        `;
+        
+        html += '</div>';
+        searchResults.innerHTML = html;
+        searchResults.classList.remove('hidden');
+      }
+
+      function showProductDetailFromSearch(productId) {
+        const product = products.find(p => p.id === productId);
+        if (product) {
+          showProductDetail(product);
+          searchResults.classList.add('hidden');
+          searchInput.value = '';
+        }
+      }
+
+      // Render Products
+      function renderProducts() {
+        productsContainer.innerHTML = "";
+
+        products.forEach((product, index) => {
+          const categoryBadges = product.category
+            .map((cat) => {
+              const categoryStyles = {
+                floral: "bg-pink-500/20 text-pink-300",
+                woody: "bg-amber-700/20 text-amber-300",
+                fresh: "bg-cyan-500/20 text-cyan-300",
+                sweet: "bg-yellow-500/20 text-yellow-300",
+              };
+              const categoryIcons = {
+                floral: "🌸",
+                woody: "🪵",
+                fresh: "💧",
+                sweet: "🍯",
+              };
+
+              return `<span class="px-3 py-1 ${categoryStyles[cat]} rounded-full text-sm">${categoryIcons[cat]} ${cat.charAt(0).toUpperCase() + cat.slice(1)}</span>`;
+            })
+            .join("");
+
+          const badge = product.badge
+            ? `
+                    <div class="absolute top-3 right-3 ${
+                      product.badge === "BEST SELLER"
+                        ? "bg-gradient-to-r from-yellow-400 to-yellow-600"
+                        : product.badge === "NEW"
+                        ? "bg-gradient-to-r from-green-400 to-emerald-500"
+                        : product.badge === "PREMIUM"
+                        ? "bg-gradient-to-r from-purple-500 to-pink-500"
+                        : "bg-gradient-to-r from-red-500 to-pink-500"
+                    } text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                        ${product.badge}
+                    </div>
+                    `
+            : "";
+
+          const productCard = document.createElement("div");
+          productCard.className = `product-card bg-gradient-to-b from-gray-900/50 to-black/50 backdrop-blur-sm rounded-2xl p-5 border border-yellow-400/10 hover:border-yellow-400/40 transition-all duration-500 group cursor-pointer`;
+          productCard.dataset.category = product.category.join(" ");
+          productCard.style.animationDelay = `${(index % 4) * 100}ms`;
+
+          productCard.innerHTML = `
+                    <div class="relative overflow-hidden rounded-xl mb-4 h-48">
+                        ${badge}
+                        <img src="${product.image}" 
+                             class="rounded-xl w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                             alt="${product.name}">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2 group-hover:text-yellow-400 transition-colors duration-300">${product.name}</h4>
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        ${categoryBadges}
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4 line-clamp-2">${product.description}</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="text-lg font-bold text-yellow-300">Rp ${product.price.toLocaleString()}</span>
+                            ${product.oldPrice ? `<span class="text-gray-400 line-through text-sm ml-2">Rp ${product.oldPrice.toLocaleString()}</span>` : ""}
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="add-to-cart-btn flex-1 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black py-2.5 rounded-lg hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 font-medium shadow-md hover:shadow-lg flex items-center justify-center"
+                                data-id="${product.id}">
+                            <i class="fas fa-shopping-cart mr-2"></i>
+                            + Keranjang
+                        </button>
+                        <button class="detail-btn flex-1 border border-yellow-400/50 text-yellow-400 py-2.5 rounded-lg hover:bg-yellow-400/10 transition-all duration-300 font-medium hover:border-yellow-400 flex items-center justify-center"
+                                data-id="${product.id}">
+                            <i class="fas fa-eye mr-2"></i>
+                            Detail
+                        </button>
+                    </div>
+                `;
+
+          productsContainer.appendChild(productCard);
+        });
+
+        // Add event listeners to buttons
+        document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const productId = parseInt(this.dataset.id);
+            const product = products.find((p) => p.id === productId);
+            addToCart(product);
+          });
+        });
+
+        document.querySelectorAll(".detail-btn").forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const productId = parseInt(this.dataset.id);
+            const product = products.find((p) => p.id === productId);
+            showProductDetail(product);
+          });
+        });
+
+        // Click on product card
+        document.querySelectorAll(".product-card").forEach((card) => {
+          card.addEventListener("click", function (e) {
+            if (!e.target.closest("button")) {
+              const productId = parseInt(this.querySelector(".detail-btn").dataset.id);
+              const product = products.find((p) => p.id === productId);
+              showProductDetail(product);
+            }
+          });
+        });
+      }
+
+      // Show products with animation
+      function showProductsWithAnimation() {
+        const productCards = document.querySelectorAll(".product-card");
+        productCards.forEach((card) => {
+          card.classList.add("show");
+        });
+      }
+
+      // Filter Products
+      function filterProducts(category) {
+        activeFilter = category;
+        const productCards = document.querySelectorAll(".product-card");
+        const filterButtons = document.querySelectorAll(".filter-btn");
+
+        // Update active button
+        filterButtons.forEach((btn) => {
+          btn.classList.remove("active");
+          if (btn.dataset.filter === category) {
+            btn.classList.add("active");
+            if (category === "all") {
+              btn.style.background = "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)";
+              btn.style.color = "black";
+            }
+          } else {
+            btn.style.background = "";
+            btn.style.color = "";
+          }
+        });
+
+        // Filter products
+        productCards.forEach((card) => {
+          if (category === "all" || card.dataset.category.includes(category)) {
+            card.style.display = "block";
+            setTimeout(() => {
+              card.style.opacity = "1";
+              card.style.transform = "translateY(0)";
+            }, 10);
+          } else {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(20px)";
+            setTimeout(() => {
+              card.style.display = "none";
+            }, 300);
+          }
+        });
+      }
+
+      // Update Cart Display
+      function updateCartDisplay() {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalItems;
+
+        if (totalItems > 0) {
+          cartCount.classList.add("cart-pulse");
+          setTimeout(() => cartCount.classList.remove("cart-pulse"), 300);
+        }
+
+        // Update cart items
+        if (cart.length === 0) {
+          cartItems.innerHTML = `
+                    <div class="text-center py-12">
+                        <div class="w-24 h-24 mx-auto mb-6 bg-gray-800/50 rounded-full flex items-center justify-center text-gray-400 text-4xl">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Keranjang Kosong</h4>
+                        <p class="text-gray-400 mb-6">Tambahkan produk favorit Anda ke keranjang</p>
+                        <button onclick="closeCart()" class="px-6 py-3 bg-yellow-400/20 text-yellow-400 rounded-lg hover:bg-yellow-400/30 transition duration-300">
+                            Lanjut Belanja
+                        </button>
+                    </div>
+                `;
+          cartSubtitle.textContent = "0 item di keranjang";
+          cartSubtotal.textContent = "Rp 0";
+          cartTotal.textContent = "Rp 0";
+          return;
+        }
+
+        let itemsHTML = "";
+        let subtotal = 0;
+
+        cart.forEach((item, index) => {
+          const itemTotal = item.price * item.quantity;
+          subtotal += itemTotal;
+
+          itemsHTML += `
+                    <div class="flex items-center space-x-4 mb-4 p-4 bg-gray-800/30 rounded-xl hover:bg-gray-800/50 transition duration-300">
+                        <img src="${item.image}" class="w-16 h-16 object-cover rounded-lg" alt="${item.name}">
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-bold text-white truncate">${item.name}</h4>
+                            <p class="text-yellow-300 text-sm">Rp ${item.price.toLocaleString()}</p>
+                            <div class="flex items-center space-x-3 mt-2">
+                                <button onclick="updateCartItem(${index}, -1)" class="w-8 h-8 flex items-center justify-center bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <span class="font-bold">${item.quantity}</span>
+                                <button onclick="updateCartItem(${index}, 1)" class="w-8 h-8 flex items-center justify-center bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                                <button onclick="removeFromCart(${index})" class="ml-auto text-red-400 hover:text-red-300 text-sm flex items-center">
+                                    <i class="fas fa-trash-alt mr-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+        });
+
+        cartItems.innerHTML = itemsHTML;
+        cartSubtitle.textContent = `${totalItems} item${totalItems > 1 ? "s" : ""} di keranjang`;
+        cartSubtotal.textContent = `Rp ${subtotal.toLocaleString()}`;
+
+        const total = subtotal;
+        cartTotal.textContent = `Rp ${total.toLocaleString()}`;
+      }
+
+      // Add to Cart
+      function addToCart(product) {
+        const existingItem = cart.find((item) => item.id === product.id);
+
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            quantity: 1,
+          });
+        }
+
+        localStorage.setItem("aromalux_cart", JSON.stringify(cart));
+        updateCartDisplay();
+        showNotification(`${product.name} ditambahkan ke keranjang!`);
+      }
+
+      // Add to Cart from Modal
+      function addToCartFromModal() {
+        if (!currentProduct) return;
+
+        const quantity = parseInt(document.getElementById("modalQuantity").textContent);
+        const existingItem = cart.find((item) => item.id === currentProduct.id);
+
+        if (existingItem) {
+          existingItem.quantity += quantity;
+        } else {
+          cart.push({
+            id: currentProduct.id,
+            name: currentProduct.name,
+            price: currentProduct.price,
+            image: currentProduct.image,
+            quantity: quantity,
+          });
+        }
+
+        localStorage.setItem("aromalux_cart", JSON.stringify(cart));
+        updateCartDisplay();
+        closeModal();
+        showNotification(`${currentProduct.name} (${quantity}x) ditambahkan ke keranjang!`);
+      }
+
+      // Update Cart Item
+      function updateCartItem(index, change) {
+        cart[index].quantity += change;
+
+        if (cart[index].quantity <= 0) {
+          cart.splice(index, 1);
+        }
+
+        localStorage.setItem("aromalux_cart", JSON.stringify(cart));
+        updateCartDisplay();
+      }
+
+      // Remove from Cart
+      function removeFromCart(index) {
+        const itemName = cart[index].name;
+        cart.splice(index, 1);
+        localStorage.setItem("aromalux_cart", JSON.stringify(cart));
+        updateCartDisplay();
+        showNotification(`${itemName} dihapus dari keranjang`);
+      }
+
+      // Show Product Detail
+      function showProductDetail(product) {
+        currentProduct = product;
+        modalQuantity = 1;
+
+        document.getElementById("modalTitle").textContent = product.name;
+        document.getElementById("modalImage").src = product.image;
+        document.getElementById("modalImage").alt = product.name;
+        document.getElementById("modalDescription").textContent = product.description;
+        document.getElementById("modalPrice").textContent = `Rp ${product.price.toLocaleString()}`;
+
+        if (product.oldPrice) {
+          document.getElementById("modalOldPrice").textContent = `Rp ${product.oldPrice.toLocaleString()}`;
+        } else {
+          document.getElementById("modalOldPrice").textContent = "";
+        }
+
+        // Update categories
+        const categoriesContainer = document.getElementById("modalCategories");
+        categoriesContainer.innerHTML = "";
+        product.category.forEach((cat) => {
+          const categoryStyles = {
+            floral: "bg-pink-500/20 text-pink-300",
+            woody: "bg-amber-700/20 text-amber-300",
+            fresh: "bg-cyan-500/20 text-cyan-300",
+            sweet: "bg-yellow-500/20 text-yellow-300",
+          };
+          const categoryNames = {
+            floral: "Floral",
+            woody: "Woody",
+            fresh: "Fresh",
+            sweet: "Sweet",
+          };
+
+          const span = document.createElement("span");
+          span.className = `px-3 py-1 ${categoryStyles[cat]} rounded-full text-sm`;
+          span.textContent = categoryNames[cat];
+          categoriesContainer.appendChild(span);
+        });
+
+        // Update notes
+        document.getElementById("modalTopNotes").textContent = product.topNotes;
+        document.getElementById("modalMiddleNotes").textContent = product.middleNotes;
+        document.getElementById("modalBaseNotes").textContent = product.baseNotes;
+
+        document.getElementById("modalQuantity").textContent = "1";
+        productModal.classList.remove("hidden");
+      }
+
+      // Change Quantity in Modal
+      function changeQuantity(change) {
+        modalQuantity += change;
+        if (modalQuantity < 1) modalQuantity = 1;
+        if (modalQuantity > 10) modalQuantity = 10;
+        document.getElementById("modalQuantity").textContent = modalQuantity;
+      }
+
+      // Close Modal
+      function closeModal() {
+        productModal.classList.add("hidden");
+        currentProduct = null;
+      }
+
+      // Open Cart
+      function openCart() {
+        cartSidebar.style.transform = "translateX(0)";
+      }
+
+      // Close Cart
+      function closeCart() {
+        cartSidebar.style.transform = "translateX(100%)";
+      }
+
+      // Checkout
+      function checkout() {
+        if (cart.length === 0) {
+          showNotification("Keranjang masih kosong!");
+          return;
+        }
+
+        // Get payment method details
+        let paymentDetails = "";
+        switch(selectedPaymentMethod) {
+          case 'transfer':
+            paymentDetails = "Transfer Bank (BCA, BNI, BRI)";
+            break;
+          case 'qris':
+            paymentDetails = "QRIS (Semua E-Wallet & Bank)";
+            break;
+          case 'dana':
+            paymentDetails = "DANA (E-Wallet)";
+            break;
+          case 'ovo':
+            paymentDetails = "OVO (E-Wallet)";
+            break;
+          default:
+            paymentDetails = "Transfer Bank";
+        }
+
+        let orderSummary = "Halo AromaLux, saya ingin order:\n\n";
+        let subtotal = 0;
+
+        cart.forEach((item) => {
+          const itemTotal = item.price * item.quantity;
+          subtotal += itemTotal;
+          orderSummary += `• ${item.name} (${item.quantity}x) - Rp ${itemTotal.toLocaleString()}\n`;
+        });
+
+        const total = subtotal;
+
+        orderSummary += `\nSubtotal: Rp ${subtotal.toLocaleString()}`;
+        orderSummary += `\nTotal: Rp ${total.toLocaleString()}`;
+        orderSummary += `\n\nNama: \nAlamat: \nNo. HP: \nMetode Pembayaran: ${paymentDetails}`;
+
+        const message = encodeURIComponent(orderSummary);
+        const whatsappUrl = `https://wa.me/6289654878113?text=${message}`;
+        window.open(whatsappUrl, "_blank");
+      }
+
+      // Show Notification
+      function showNotification(message) {
+        notificationMessage.textContent = message;
+        notification.classList.remove("hidden");
+        notification.classList.add("fadeInUp");
+
+        setTimeout(() => {
+          notification.classList.add("hidden");
+          notification.classList.remove("fadeInUp");
+        }, 3000);
+      }
+
+      // Setup Event Listeners
+      function setupEventListeners() {
+        // Cart button
+        document.getElementById("cartButton").addEventListener("click", openCart);
+
+        // Mobile menu
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        // Filter buttons
+        document.querySelectorAll(".filter-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            filterProducts(this.dataset.filter);
+          });
+        });
+
+        // Close modal when clicking outside
+        productModal.addEventListener("click", function (event) {
+          if (event.target === productModal) {
+            closeModal();
+          }
+        });
+
+        // Close cart when clicking outside on mobile
+        if (window.innerWidth < 768) {
+          cartSidebar.addEventListener("click", function (event) {
+            if (event.target === cartSidebar) {
+              closeCart();
+            }
+          });
+        }
+
+        // Back to top button functionality
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 300) {
+            backToTopButton.classList.remove("opacity-0", "translate-y-10");
+            backToTopButton.classList.add("opacity-100", "translate-y-0");
+          } else {
+            backToTopButton.classList.remove("opacity-100", "translate-y-0");
+            backToTopButton.classList.add("opacity-0", "translate-y-10");
+          }
+        });
+
+        backToTopButton.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            closeModal();
+            closeCart();
+          }
+          if ((event.ctrlKey || event.metaKey) && event.key === "k") {
+            event.preventDefault();
+            openCart();
+          }
+        });
+
+        // Search functionality
+        if (searchInput) {
+          let searchTimeout;
+          searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+              performSearch(e.target.value);
+            }, 300);
+          });
+          
+          searchInput.addEventListener('focus', () => {
+            if (searchInput.value.trim()) {
+              performSearch(searchInput.value);
+            }
+          });
+          
+          document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+              searchResults.classList.add('hidden');
+            }
+          });
+          
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+              searchResults.classList.add('hidden');
+            }
+          });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener("click", function (event) {
+          if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+            mobileMenu.classList.add("hidden");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tentang Brand - AromaLux</title>
+    <meta name="description" content="Kenali lebih dalam filosofi, visi misi, dan tim di balik AromaLux. Parfum premium dengan harga terjangkau." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      /* Animasi yang lebih smooth */
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 5px rgba(250, 204, 21, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
+        }
+      }
+
+      @keyframes slideInLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        0% {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .fadeInUp {
+        animation: fadeInUp 1s ease forwards;
+      }
+
+      .slideInLeft {
+        animation: slideInLeft 1s ease forwards;
+      }
+
+      .slideInRight {
+        animation: slideInRight 1s ease forwards;
+      }
+
+      .float-animation {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .pulse-glow {
+        animation: pulseGlow 2s ease-in-out infinite;
+      }
+
+      .delay-100 {
+        animation-delay: 0.1s;
+      }
+
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+
+      .delay-400 {
+        animation-delay: 0.4s;
+      }
+
+      .delay-500 {
+        animation-delay: 0.5s;
+      }
+
+      /* Hover effect untuk card */
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(250, 204, 21, 0.15);
+      }
+
+      /* Gradient text */
+      .gradient-text {
+        background: linear-gradient(90deg, #fbbf24, #f59e0b, #d97706);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Smooth scroll behavior */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Progress bar */
+      .progress-container {
+        width: 100%;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.05);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+      }
+
+      .progress-bar {
+        height: 4px;
+        background: linear-gradient(90deg, #fbbf24, #f59e0b);
+        width: 0%;
+        transition: width 0.3s ease;
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white font-sans overflow-x-hidden">
+    <!-- Progress bar -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- NAVBAR DENGAN ANIMASI -->
+    <header class="flex justify-between items-center px-4 md:px-8 py-4 bg-black/90 fixed w-full z-50 backdrop-blur-md transition-all duration-300">
+      <a href="index.html" class="text-2xl md:text-3xl font-bold tracking-wide text-yellow-400 hover:text-yellow-300 transition-all duration-300 transform hover:scale-105">AromaLux</a>
+      <nav class="hidden md:flex space-x-6 lg:space-x-8 text-lg">
+        <a href="index.html" class="hover:text-yellow-400 transition duration-300 relative group">
+          Home
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="produk.html" class="hover:text-yellow-400 transition duration-300 relative group">
+          Produk
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="brand.html" class="hover:text-yellow-400 transition duration-300 relative group text-yellow-400">
+          Brand
+          <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-yellow-400"></span>
+        </a>
+        <a href="kontak.html" class="hover:text-yellow-400 transition duration-300 relative group">
+          Kontak
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+      </nav>
+
+      <button id="mobileMenuButton" class="md:hidden text-2xl hover:text-yellow-400 transition duration-300 transform hover:scale-110">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div id="mobileMenu" class="absolute top-full left-0 w-full bg-black/95 backdrop-blur-lg hidden md:hidden transition-all duration-300">
+        <div class="flex flex-col p-6 space-y-4">
+          <a href="index.html" class="hover:text-yellow-400 py-2 border-b border-gray-800 hover:border-yellow-400 transition duration-300 hover:pl-4">Home</a>
+          <a href="produk.html" class="hover:text-yellow-400 py-2 border-b border-gray-800 hover:border-yellow-400 transition duration-300 hover:pl-4">Produk</a>
+          <a href="brand.html" class="hover:text-yellow-400 py-2 border-b border-yellow-400 transition duration-300 hover:pl-4 text-yellow-400">Brand</a>
+          <a href="kontak.html" class="hover:text-yellow-400 py-2 transition duration-300 hover:pl-4">Kontak</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HEADER BRAND DENGAN ANIMASI -->
+    <div class="pt-24 pb-16 px-4 md:px-10 bg-gradient-to-b from-black to-gray-900 text-center relative overflow-hidden">
+      <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-yellow-400/10 blur-xl"></div>
+      <div class="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-yellow-400/5 blur-xl"></div>
+
+      <div class="max-w-4xl mx-auto fadeInUp">
+        <h1 class="text-4xl md:text-6xl font-bold gradient-text mb-6">Tentang <span class="text-yellow-400">AromaLux</span></h1>
+        <p class="text-gray-300 text-lg md:text-xl mb-8">Lebih dari sekadar parfum, AromaLux adalah tentang memberikan pengalaman mewah yang dapat dinikmati semua orang.</p>
+        <div class="flex justify-center space-x-4">
+          <a href="#filosofi" class="px-6 py-3 bg-yellow-400 text-black font-medium rounded-full hover:bg-yellow-300 transition duration-300 transform hover:scale-105 pulse-glow"> Jelajahi Filosofi Kami </a>
+          <a href="#tim" class="px-6 py-3 border border-yellow-400 text-yellow-400 font-medium rounded-full hover:bg-yellow-400/10 transition duration-300 transform hover:scale-105"> Kenali Tim Kami </a>
+        </div>
+      </div>
+
+      <div class="mt-12 fadeInUp delay-200">
+        <div class="inline-flex items-center space-x-2 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full">
+          <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+          <span class="text-gray-300">100% Produksi Lokal</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILOSOFI DENGAN ANIMASI -->
+    <section id="filosofi" class="py-20 px-4 md:px-10 bg-black relative overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-yellow-400/5 blur-3xl"></div>
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 fadeInUp">
+          <span class="gradient-text">Filosofi Brand</span>
+        </h2>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="slideInLeft">
+            <div class="inline-block mb-6">
+              <div class="w-16 h-16 rounded-xl bg-yellow-400/20 flex items-center justify-center text-yellow-400 text-2xl float-animation">
+                <i class="fas fa-crown"></i>
+              </div>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-bold text-white mb-6">Luxury For <span class="text-yellow-400">Everyone</span></h3>
+            <div class="space-y-4">
+              <p class="text-gray-300 text-lg leading-relaxed">Kami percaya bahwa kemewahan seharusnya tidak eksklusif. Setiap orang berhak merasakan aroma premium yang meningkatkan kepercayaan diri dan mood sehari-hari.</p>
+              <p class="text-gray-300 text-lg leading-relaxed">AromaLux hadir untuk mendemokratisasikan parfum premium dengan menghadirkan kualitas tertinggi dalam kisaran harga yang terjangkau.</p>
+            </div>
+            <div class="mt-8 pt-6 border-t border-gray-800">
+              <div class="flex items-center space-x-2">
+                <i class="fas fa-quote-left text-yellow-400 text-xl"></i>
+                <p class="text-gray-400 italic">"Kemewahan bukan tentang harga, tapi tentang pengalaman yang diberikan."</p>
+              </div>
+            </div>
+          </div>
+          <div class="slideInRight delay-200">
+            <div class="relative">
+              <img
+                src="velvet.jpg"
+                class="rounded-2xl shadow-2xl w-full h-auto object-cover transform transition-all duration-500 hover:scale-105"
+                alt="Filosofi AromaLux"
+              />
+              <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-yellow-400/20 rounded-full blur-md"></div>
+              <div class="absolute -top-4 -left-4 w-16 h-16 bg-yellow-400/10 rounded-full blur-md"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ <!---Identitas--->
+<section class="py-20 px-4 md:px-10 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-20"></div>
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 fadeInUp">
+      <span class="gradient-text">Identitas Visual</span>
+    </h2>
+    
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+      <div class="slideInLeft">
+        <div class="bg-black/40 backdrop-blur-sm p-8 rounded-2xl border border-yellow-400/20">
+          <div class="flex items-center justify-center mb-8">
+            <img 
+  src="logo.png" 
+  alt="AromaLux Logo"
+  class="w-24 h-24 md:w-36 md:h-36 mr-4 object-contain drop-shadow-[0_0_15px_rgba(234,179,8,0.6)]"
+/>
+
+            <div class="h-16 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600 mr-4"></div>
+            <div>
+              <div class="text-2xl font-bold text-white">AromaLux</div>
+              <div class="text-gray-400 text-sm">Primary Logo</div>
+            </div>
+          </div>
+          <p class="text-gray-300 text-center">Logo kami merepresentasikan kemewahan (crown icon) dan keanggunan (tipografi sans-serif yang clean). Warna emas melambangkan premium quality.</p>
+        </div>
+      </div>
+      
+      <div class="slideInRight delay-200">
+        <h3 class="text-2xl font-bold text-white mb-6">Color Palette</h3>
+        <div class="grid grid-cols-4 gap-4 mb-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-black rounded-xl mx-auto mb-2 border border-yellow-400/20"></div>
+            <div class="text-white text-sm font-medium">Black</div>
+            <div class="text-gray-400 text-xs">#000000</div>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl mx-auto mb-2"></div>
+            <div class="text-white text-sm font-medium">Gold</div>
+            <div class="text-gray-400 text-xs">#FBBF24</div>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-gray-900 rounded-xl mx-auto mb-2 border border-gray-700"></div>
+            <div class="text-white text-sm font-medium">Dark Gray</div>
+            <div class="text-gray-400 text-xs">#111827</div>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-white rounded-xl mx-auto mb-2 border border-gray-300"></div>
+            <div class="text-black text-sm font-medium">White</div>
+            <div class="text-gray-600 text-xs">#FFFFFF</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- VISI MISI DENGAN ANIMASI -->
+    <section class="py-20 px-4 md:px-10 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-30"></div>
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 fadeInUp">
+          <span class="gradient-text">Visi & Misi</span>
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-black/40 backdrop-blur-sm p-8 rounded-2xl border border-yellow-400/20 card-hover fadeInUp delay-100">
+            <div class="flex items-center mb-6">
+              <div class="w-14 h-14 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 flex items-center justify-center text-black text-2xl mr-4 pulse-glow">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white">Visi Kami</h3>
+            </div>
+            <p class="text-gray-300 text-lg leading-relaxed">Menjadi brand parfum premium lokal terdepan yang dikenal dengan kualitas internasional, inovasi berkelanjutan, dan komitmen terhadap kepuasan pelanggan.</p>
+            <div class="mt-8 pt-6 border-t border-gray-800">
+              <div class="flex items-center">
+                <i class="fas fa-rocket text-yellow-400 mr-2"></i>
+                <span class="text-gray-400">Target 2028: Ekspansi ke 5 negara ASEAN</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-black/40 backdrop-blur-sm p-8 rounded-2xl border border-yellow-400/20 card-hover fadeInUp delay-300">
+            <div class="flex items-center mb-6">
+              <div class="w-14 h-14 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 flex items-center justify-center text-black text-2xl mr-4 pulse-glow">
+                <i class="fas fa-flag-checkered"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white">Misi Kami</h3>
+            </div>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <div class="w-6 h-6 rounded-full bg-yellow-400/20 flex items-center justify-center text-yellow-400 mr-3 mt-1 flex-shrink-0">
+                  <i class="fas fa-check text-xs"></i>
+                </div>
+                <span class="text-gray-300">Menghadirkan produk parfum dengan bahan premium dan teknologi terkini</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-6 h-6 rounded-full bg-yellow-400/20 flex items-center justify-center text-yellow-400 mr-3 mt-1 flex-shrink-0">
+                  <i class="fas fa-check text-xs"></i>
+                </div>
+                <span class="text-gray-300">Memberikan nilai terbaik dengan harga yang kompetitif</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-6 h-6 rounded-full bg-yellow-400/20 flex items-center justify-center text-yellow-400 mr-3 mt-1 flex-shrink-0">
+                  <i class="fas fa-check text-xs"></i>
+                </div>
+                <span class="text-gray-300">Mengedukasi masyarakat tentang pentingnya aroma dalam kehidupan sehari-hari</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-6 h-6 rounded-full bg-yellow-400/20 flex items-center justify-center text-yellow-400 mr-3 mt-1 flex-shrink-0">
+                  <i class="fas fa-check text-xs"></i>
+                </div>
+                <span class="text-gray-300">Mendukung industri lokal dengan memproduksi 100% di Indonesia</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEUNGGULAN DENGAN ANIMASI - MIRIP INDEX -->
+    <section class="py-20 px-4 md:px-10 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+      <div class="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-yellow-400/5 blur-2xl"></div>
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 fadeInUp">
+          <span class="gradient-text">Keunggulan Produk Kami</span>
+        </h2>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Feature 1 -->
+          <div class="group relative">
+            <div class="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-all duration-700 group-hover:scale-105"></div>
+            <div
+              class="relative bg-gradient-to-b from-gray-900/90 to-black/90 backdrop-blur-xl p-8 rounded-2xl border border-yellow-400/30 group-hover:border-yellow-400/60 transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-400/10 hover:-translate-y-2 h-full flex flex-col fadeInUp delay-100"
+            >
+              <div
+                class="w-20 h-20 mb-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-3xl shadow-2xl transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 mx-auto"
+              >
+                <i class="fas fa-flask"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-4 text-center group-hover:text-yellow-300 transition-colors duration-300">Formula Premium</h3>
+              <p class="text-gray-300 mb-5 flex-grow text-center leading-relaxed group-hover:text-gray-200 transition-colors duration-300">Menggunakan bahan-bahan berkualitas tinggi yang setara dengan parfum internasional premium.</p>
+              <div class="pt-4 border-t border-yellow-400/20 group-hover:border-yellow-400/40 transition-all duration-300">
+                <span class="text-yellow-400 text-sm font-medium block text-center transform group-hover:translate-x-2 transition-transform duration-300">→ 100% Natural Extracts</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="group relative">
+            <div class="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-all duration-700 group-hover:scale-105"></div>
+            <div
+              class="relative bg-gradient-to-b from-gray-900/90 to-black/90 backdrop-blur-xl p-8 rounded-2xl border border-yellow-400/30 group-hover:border-yellow-400/60 transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-400/10 hover:-translate-y-2 h-full flex flex-col fadeInUp delay-200"
+            >
+              <div
+                class="w-20 h-20 mb-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-3xl shadow-2xl transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 mx-auto"
+              >
+                <i class="fas fa-clock"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-4 text-center group-hover:text-yellow-300 transition-colors duration-300">Long Lasting</h3>
+              <p class="text-gray-300 mb-5 flex-grow text-center leading-relaxed group-hover:text-gray-200 transition-colors duration-300">Formulasi khusus yang dirancang untuk bertahan 8-12 jam, memberikan wangi optimal sepanjang hari.</p>
+              <div class="pt-4 border-t border-yellow-400/20 group-hover:border-yellow-400/40 transition-all duration-300">
+                <span class="text-yellow-400 text-sm font-medium block text-center transform group-hover:translate-x-2 transition-transform duration-300">→ 12+ Jam Ketahanan</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="group relative">
+            <div class="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-all duration-700 group-hover:scale-105"></div>
+            <div
+              class="relative bg-gradient-to-b from-gray-900/90 to-black/90 backdrop-blur-xl p-8 rounded-2xl border border-yellow-400/30 group-hover:border-yellow-400/60 transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-400/10 hover:-translate-y-2 h-full flex flex-col fadeInUp delay-300"
+            >
+              <div
+                class="w-20 h-20 mb-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-3xl shadow-2xl transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 mx-auto"
+              >
+                <i class="fas fa-tag"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-4 text-center group-hover:text-yellow-300 transition-colors duration-300">Affordable Luxury</h3>
+              <p class="text-gray-300 mb-5 flex-grow text-center leading-relaxed group-hover:text-gray-200 transition-colors duration-300">Kemewahan parfum premium tanpa harga yang mahal. Quality tanpa compromise.</p>
+              <div class="pt-4 border-t border-yellow-400/20 group-hover:border-yellow-400/40 transition-all duration-300">
+                <span class="text-yellow-400 text-sm font-medium block text-center transform group-hover:translate-x-2 transition-transform duration-300">→ Harga Kompetitif</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="group relative">
+            <div class="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-all duration-700 group-hover:scale-105"></div>
+            <div
+              class="relative bg-gradient-to-b from-gray-900/90 to-black/90 backdrop-blur-xl p-8 rounded-2xl border border-yellow-400/30 group-hover:border-yellow-400/60 transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-400/10 hover:-translate-y-2 h-full flex flex-col fadeInUp delay-400"
+            >
+              <div
+                class="w-20 h-20 mb-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-3xl shadow-2xl transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 mx-auto"
+              >
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-4 text-center group-hover:text-yellow-300 transition-colors duration-300">Eco-Friendly</h3>
+              <p class="text-gray-300 mb-5 flex-grow text-center leading-relaxed group-hover:text-gray-200 transition-colors duration-300">Kemasan ramah lingkungan dan bahan-bahan yang aman untuk kulit sensitif.</p>
+              <div class="pt-4 border-t border-yellow-400/20 group-hover:border-yellow-400/40 transition-all duration-300">
+                <span class="text-yellow-400 text-sm font-medium block text-center transform group-hover:translate-x-2 transition-transform duration-300">→ Sustainable Packaging</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIM DENGAN ANIMASI - 5 ORANG -->
+<section id="tim" class="py-20 px-4 md:px-10 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+  <div class="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-yellow-400/5 blur-3xl"></div>
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 fadeInUp">
+      <span class="gradient-text">Tim Kami</span>
+    </h2>
+
+    <!-- Baris Pertama: 2 orang -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 max-w-4xl mx-auto">
+      <!-- Anggota Tim 1 -->
+      <div class="bg-gradient-to-b from-black/40 to-transparent rounded-2xl p-8 border border-yellow-400/20 card-hover fadeInUp delay-100">
+        <div class="mb-8">
+          <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-yellow-400/30 mb-6">
+            <img src="dika.jpg" alt="Dika 3 Wahyudi" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+          </div>
+          <h3 class="text-2xl font-bold text-white text-center mb-2">Dika 3 Wahyudi</h3>
+          <p class="text-yellow-400 text-center text-lg font-medium mb-4">Owner</p>
+        </div>
+        <div class="flex justify-center space-x-4">
+          <a href="https://www.instagram.com/dika_triwahyudi09?igsh=MWNicnZidnZpYXF3MQ==" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-pink-600 hover:text-white transition duration-300 transform hover:scale-110">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Anggota Tim 2 -->
+      <div class="bg-gradient-to-b from-black/40 to-transparent rounded-2xl p-8 border border-yellow-400/20 card-hover fadeInUp delay-200">
+        <div class="mb-8">
+          <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-yellow-400/30 mb-6">
+            <img src="adam1.jpg" alt="Rifki Athoriq" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+          </div>
+          <h3 class="text-2xl font-bold text-white text-center mb-2">Rifki Athoriq</h3>
+          <p class="text-yellow-400 text-center text-lg font-medium mb-4">Parfumer</p>
+        </div>
+        <div class="flex justify-center space-x-4">
+          <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-pink-600 hover:text-white transition duration-300 transform hover:scale-110">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Baris Tengah: 1 orang di tengah -->
+    <div class="flex justify-center mb-8 fadeInUp delay-300">
+      <div class="bg-gradient-to-b from-black/40 to-transparent rounded-2xl p-8 border border-yellow-400/20 card-hover max-w-sm w-full">
+        <div class="mb-8">
+          <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-yellow-400/30 mb-6">
+            <img src="surya.jpg" alt="Surya Handy" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+          </div>
+          <h3 class="text-2xl font-bold text-white text-center mb-2">Surya Handy</h3>
+          <p class="text-yellow-400 text-center text-lg font-medium mb-4">Marketing</p>
+        </div>
+        <div class="flex justify-center space-x-4">
+          <a href="https://www.instagram.com/qwertysuvnm._?igsh=cnlzbDIwMjhrMzc=" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-pink-600 hover:text-white transition duration-300 transform hover:scale-110">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Baris Ketiga: 2 orang -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <!-- Anggota Tim 4 -->
+      <div class="bg-gradient-to-b from-black/40 to-transparent rounded-2xl p-8 border border-yellow-400/20 card-hover fadeInUp delay-400">
+        <div class="mb-8">
+          <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-yellow-400/30 mb-6">
+            <img src="roky.jpg" alt="Roky Widianto" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+          </div>
+          <h3 class="text-2xl font-bold text-white text-center mb-2">Roky Widianto</h3>
+          <p class="text-yellow-400 text-center text-lg font-medium mb-4">Creative Designer</p>
+        </div>
+        <div class="flex justify-center space-x-4">
+          <a href="https://www.instagram.com/hykiiy?igsh=a2VqMnp3aTBic2Fl" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-pink-600 hover:text-white transition duration-300 transform hover:scale-110">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Anggota Tim 5 -->
+      <div class="bg-gradient-to-b from-black/40 to-transparent rounded-2xl p-8 border border-yellow-400/20 card-hover fadeInUp delay-500">
+        <div class="mb-8">
+          <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-yellow-400/30 mb-6">
+            <img src="bayu2.jpg" alt="Bayu Prasetyo" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+          </div>
+          <h3 class="text-2xl font-bold text-white text-center mb-2">Bayu Prasetyo</h3>
+          <p class="text-yellow-400 text-center text-lg font-medium mb-4">Quality Control</p>
+        </div>
+        <div class="flex justify-center space-x-4">
+          <a href="https://www.instagram.com/byuprstyo._?igsh=MWpmN25yajVoM3R6Ng==" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-pink-600 hover:text-white transition duration-300 transform hover:scale-110">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- FOOTER DENGAN ANIMASI (SAMA SEPERTI INDEX) -->
+    <footer class="bg-gradient-to-b from-black via-gray-900 to-black pt-20 relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-30"></div>
+
+      <div class="py-12 px-4 md:px-10">
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-10">
+            <!-- Brand Info -->
+            <div class="lg:col-span-2 fadeInUp delay-100">
+              <a href="index.html" class="text-3xl font-bold text-yellow-400 mb-4 inline-block hover:scale-105 transition-transform duration-300"> <i class="fas fa-gem mr-2"></i>AromaLux </a>
+              <p class="text-gray-400 mb-6 max-w-md">Luxury perfume for everyone. Menghadirkan aroma mewah premium dengan kualitas terbaik dan harga yang terjangkau bagi semua kalangan.</p>
+              <div class="flex space-x-4">
+                <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-yellow-400 rounded-full flex items-center justify-center text-gray-300 hover:text-black transition-all duration-300 hover:scale-110">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-yellow-400 rounded-full flex items-center justify-center text-gray-300 hover:text-black transition-all duration-300 hover:scale-110">
+                  <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-yellow-400 rounded-full flex items-center justify-center text-gray-300 hover:text-black transition-all duration-300 hover:scale-110">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-yellow-400 rounded-full flex items-center justify-center text-gray-300 hover:text-black transition-all duration-300 hover:scale-110">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="fadeInUp delay-200">
+              <h4 class="text-lg font-bold text-white mb-6 flex items-center">
+                <i class="fas fa-link text-yellow-400 mr-3"></i>
+                Menu Cepat
+              </h4>
+              <ul class="space-y-3">
+                <li>
+                  <a href="index.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-chevron-right text-xs mr-3 text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="produk.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-chevron-right text-xs mr-3 text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                    Produk
+                  </a>
+                </li>
+                <li>
+                  <a href="brand.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-chevron-right text-xs mr-3 text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                    Brand
+                  </a>
+                </li>
+                <li>
+                  <a href="kontak.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-chevron-right text-xs mr-3 text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                    Kontak
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Produk -->
+            <div class="fadeInUp delay-300">
+              <h4 class="text-lg font-bold text-white mb-6 flex items-center">
+                <i class="fas fa-box text-yellow-400 mr-3"></i>
+                Koleksi
+              </h4>
+              <ul class="space-y-3">
+                <li>
+                  <a href="produk.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-fire text-yellow-400 mr-3 text-sm"></i>
+                    Best Seller
+                  </a>
+                </li>
+                <li>
+                  <a href="produk.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-star text-yellow-400 mr-3 text-sm"></i>
+                    New Arrival
+                  </a>
+                </li>
+                <li>
+                  <a href="produk.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-gem text-yellow-400 mr-3 text-sm"></i>
+                    Limited Edition
+                  </a>
+                </li>
+                <li>
+                  <a href="produk.html" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center group">
+                    <i class="fas fa-gift text-yellow-400 mr-3 text-sm"></i>
+                    Gift Sets
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Kontak Info -->
+            <div class="fadeInUp delay-400">
+              <h4 class="text-lg font-bold text-white mb-6 flex items-center">
+                <i class="fas fa-phone text-yellow-400 mr-3"></i>
+                Hubungi Kami
+              </h4>
+                </li>
+                <li class="flex items-center group">
+                  <i class="fas fa-phone text-yellow-400 mr-3"></i>
+                  <a href="tel:+6289654878113" class="text-gray-400 hover:text-yellow-400 text-sm transition duration-300">+62 896-5487-8113</a>
+                </li>
+                <br>
+                <li class="flex items-center group">
+                  <i class="fas fa-envelope text-yellow-400 mr-3"></i>
+                  <a href="mailto:info@aromalux.com" class="text-gray-400 hover:text-yellow-400 text-sm transition duration-300">info@aromalux.com</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bottom Footer -->
+          <div class="border-t border-gray-800 pt-8 fadeInUp delay-500">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+              <div class="mb-4 md:mb-0 text-center md:text-left">
+                <p class="text-gray-400 text-sm">
+                  © 2025 <span class="text-yellow-400 font-semibold">AromaLux</span>. All Rights Reserved.
+                  <span class="mx-2 hidden md:inline">•</span>
+                  <br class="md:hidden" />
+                  <a href="privasi.html" class="hover:text-yellow-400 transition duration-300">Kebijakan Privasi</a>
+                  <span class="mx-2">•</span>
+                  <a href="syarat.html" class="hover:text-yellow-400 transition duration-300">Syarat & Ketentuan</a>
+                </p>
+              </div>
+              <div class="text-gray-400 text-sm flex items-center">
+                <br class="md:hidden" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-yellow-400 text-black rounded-full shadow-lg flex items-center justify-center z-40 opacity-0 transition-all duration-300 transform translate-y-10 hover:bg-yellow-300">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      function toggleMobileMenu() {
+        mobileMenu.classList.toggle("hidden");
+        mobileMenu.classList.toggle("animate-fadeIn");
+      }
+
+      mobileMenuButton.addEventListener("click", toggleMobileMenu);
+
+      document.addEventListener("click", (event) => {
+        if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+          mobileMenu.classList.add("hidden");
+        }
+      });
+
+      // Back to top button
+      const backToTopButton = document.getElementById("backToTop");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTopButton.classList.remove("opacity-0", "translate-y-10");
+          backToTopButton.classList.add("opacity-100", "translate-y-0");
+        } else {
+          backToTopButton.classList.remove("opacity-100", "translate-y-0");
+          backToTopButton.classList.add("opacity-0", "translate-y-10");
+        }
+
+        // Progress bar
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      });
+
+      backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Animasi saat scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fadeInUp");
+          }
+        });
+      }, observerOptions);
+
+      
+      // Observe elements untuk animasi saat scroll
+      document.querySelectorAll("section h2, section .grid > div").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Efek hover untuk semua card
+      document.querySelectorAll(".card-hover").forEach((card) => {
+        card.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-10px)";
+        });
+
+        card.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0)";
+        });
+      });
+    </script>
+  </body>
+</html>
